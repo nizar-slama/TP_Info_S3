@@ -1,6 +1,6 @@
 int 
 pgcd (int a , int b){
-  if (a=b) {
+  if (a==b) {
     return a;
   } else if (a>b) {
     return pgcd (a-b, b);
