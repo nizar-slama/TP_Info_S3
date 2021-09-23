@@ -17,6 +17,10 @@
     printf ( "%p ==\n%p\n" , & x1 , & x0 - 1 ) ;
     *( & x0 -1 ) = 6 ;
     printf ( "x0 = %d\nx1 = %d\nx2 = %d\n" , x0 , x1 , x2 ) ;
+    *( & x0)=-2;
+    *( & x1)=-4;
+     printf ( "x0 = %d\nx1 = %d\nx2 = %d\n" , x0 , x1 , x2 ) ;
+
     return 0;
  }
  
