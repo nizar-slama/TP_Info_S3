@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define TAILLE 10 
 int 
 somme(int * T, int N) {
     int res = 0;
@@ -15,6 +16,6 @@ main(){
         T1[i] = i;
     }
 s=somme(T1,10);
-printf( "la somme des  nombres  jusqu ’a 9  est %d\n",s);
+printf( "la somme des  nombres  jusqu ’a  9999  est %d\n",s);
 return 0;
 }
