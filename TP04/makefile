@@ -9,11 +9,14 @@ CreerMatrice.o: CreerMatrice.c
 	gcc -I ~/Informatique/S3/include -Wall -Werror -Wextra  -ggdb3 -c CreerMatrice.c
 	
 ~/Informatique/S3/bin/AfficheMatrice: AfficheMatrice.c CreerMatrice.o
-	gcc -I ~/Informatique/S3/include -ggdb3 -Wall -Werror -Wextra AfficheMatrice CreerMatrice.o -DTESTS -o  ~/Informatique/S3/bin/AfficheMatrice
+	gcc -I ~/Informatique/S3/include -ggdb3 -Wall -Werror -Wextra AfficheMatrice.c CreerMatrice.o -DTESTS -o  ~/Informatique/S3/bin/AfficheMatrice
 
 run/AfficheMatrice: ~/Informatique/S3/bin/AfficheMatrice
 	~/Informatique/S3/bin/AfficheMatrice
 
 AfficheMatrice.o: AfficheMatrice.c
 	gcc -I ~/Informatique/S3/include -ggdb3 -Wall -Werror -Wextra AfficheMatrice
+
+~/Informatique/S3/bin/fraction: fraction.h 
+gcc -I ~/Informatique/S3/include
 
