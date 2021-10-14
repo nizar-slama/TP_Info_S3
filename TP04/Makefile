@@ -17,6 +17,6 @@ run/AfficheMatrice: ~/Informatique/S3/bin/AfficheMatrice
 AfficheMatrice.o: AfficheMatrice.c
 	gcc -I ~/Informatique/S3/include -ggdb3 -Wall -Werror -Wextra AfficheMatrice
 
-~/Informatique/S3/bin/fraction: fraction.h 
-gcc -I ~/Informatique/S3/include
+~/Informatique/S3/include/fraction: fraction.h 
+gcc -I ~/Informatique/S3/include -ggdb3 -Wall -Werror -Wextra fraction.h 
 
