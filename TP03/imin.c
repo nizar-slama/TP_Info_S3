@@ -5,7 +5,7 @@ if (T[1]<T[indice_min]){
 indice_min=i;
 }
 }
-return indice_min
+return indice_min;
 }
 
 
