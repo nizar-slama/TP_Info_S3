@@ -5,7 +5,7 @@ numerateur ( struct fraction_s *x){
     return & (*x).p;
 }
 int *
-denominateur (struct fraction_s *x){
+denominateur (struct fraction_s* x){
     return & (*x).q;
 }
 #ifdef TESTS
