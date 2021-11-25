@@ -1,4 +1,4 @@
-commande de compilation 
+#commande de compilation 
 
 CC=gcc 
 
