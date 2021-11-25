@@ -12,7 +12,7 @@ LDFLAGS=  -lm -lentrees
 
 #emplacement des .a (librairies) du TP 
 
-LIB= ../../lib 
+LIB= -L ~/Informatique/S3/lib/
 
 # emplacement des .h du TP 
 
@@ -34,31 +34,28 @@ OBJ= $(SRC:.c=.o)
 
 all : $(EXEC) 
 
-# Permet d'afficher le mode d'éxécution 
+~/Informatique/S3/lib/libentrees.a : lirefindeligne.o lireentier.o liredecimal.o# indique la dépendance de fichiers pour produire la lib (commenter si pb) 
+	ar rcs ~/Informatique/S3/lib/libentrees.a lirefindeligne.o lireentier.o liredecimal.o
+	ranlib ~/Informatique/S3/lib/libentrees.a         
 
-ifeq ($(DEBUG),yes) 
 
-    @echo "debug" 
 
-else 
-
-    @echo "sans debug" 
-
-endif 
-
-libentrees.a : entrees.c $(INC)/entrees.h  # indique la dépendance de fichiers pour produire la lib (commenter si pb) 
-
-	$(CC) -o $(OBJ) -c $(SRC) $(CFLAGS) 
-
-	ar rcs $(LIB)/libentrees.a $(OBJ)   # les deux commandes suivantes créent la librairie  
-
-	ranlib $(LIB)/libentrees.a          # dans le répertoire donné par LIB 
-
- 
-
-%.o: %.c %.h 
-	@$(CC) -o $@ -c $< $(CFLAGS) 
+%.o: %.c 
+	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC)
 
 clean: 
+	rm $(LIB)/libentrees.a  *.o          # permet d'automatiser le "nettoyage"
 
-	rm $(LIB)/libentrees.a  *.o          # permet d'automatiser le "nettoyage" 
+~/Informatique/S3/bin/%: %.c ~/Informatique/S3/lib/libentrees.a
+	gcc $< -o $@ -DTESTS -DUSECOLORS -L ~/Informatique/S3/lib/ -lentrees -I $(INC)
+
+test/lirefindeligne: ~/Informatique/S3/bin/lirefindeligne
+	printf "51 a  bc\n az" |~/Informatique/S3/bin/lirefindeligne
+
+test/lireentier: ~/Informatique/S3/bin/lireentier
+	printf "51 a\n abc\n 1.3\n 5\n" |~/Informatique/S3/bin/lireentier
+
+test/liredecimal: ~/Informatique/S3/bin/liredecimal
+	printf "51 a\n abc\n 8.0 b\n 5.0\n" |~/Informatique/S3/bin/liredecimal
+	
+test:  test/lirefindeligne test/lireentier test/liredecimal
